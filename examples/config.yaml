@@ -1,0 +1,128 @@
+data:
+    amazon: 
+        file_path: ../data/amazon_disectr.csv
+        used_feature_columns:
+            - reviewerID
+            - asin
+            - unixReviewTime
+            - category
+            - price_q
+            - brand
+            - label
+        sparse_features:
+            - reviewerID
+            - asin
+            - category
+            - brand
+            - price_q
+        dense_features: []
+        timestamp_key: unixReviewTime
+        train_val_split: 1390003200
+        val_test_split: 1397520000
+        uid_feature_name: reviewerID
+        iid_feature_name: asin
+        target_feature_name: label
+        color_feature_name: price_q
+    kuaishou:
+        file_path_easy: ../data/kuaishou_disectr_easy.csv
+        file_path_hard: ../data/kuaishou_disectr_hard.csv
+        used_feature_columns:
+            - time_ms
+            - click
+            - like
+            - user_id
+            - photo_id
+            - author_id
+            - photo_kmeans_cluster_id
+            - author_kmeans_cluster_id
+            - duration_q
+            - user_type
+            - photo_type
+        sparse_features:
+            - user_id
+            - photo_id
+            - author_id
+            - photo_kmeans_cluster_id
+            - author_kmeans_cluster_id
+            - duration_q
+            - user_type
+            - photo_type
+        dense_features: []
+        timestamp_key: time_ms
+        train_val_split: 1615608000000 #datetime.timestamp(datetime(2021, 3, 13, 12, 00, 00, 000000))*1000
+        val_test_split: 1615694400000 #datetime.timestamp(datetime(2021, 3, 14, 12, 00, 00, 000000))*1000
+        uid_feature_name: user_id
+        iid_feature_name: photo_id
+        target_feature_name: click
+        transfer_target_feature_name: like
+        color_feature_name: duration_q
+        index_file_name: kuaishou_index.npy
+        pos_pair_file_name: kuaishou_pos_pair.npy
+        pos_pair_distance_file_name: kuaishou_pos_pair_distance.npy
+        neg_pair_file_name: kuaishou_neg_pair.npy
+        neg_pair_distance_file_name: kuaishou_neg_pair_distance.npy
+    wechat:
+        file_path_easy: ../data/wechat_disectr_easy.csv
+        file_path_hard: ../data/wechat_disectr_hard.csv
+        used_feature_columns:
+            - userid
+            - feedid
+            - date_
+            - device
+            - authorid
+            - bgm_song_id
+            - bgm_singer_id
+            - click
+            - like
+            - duration_q
+            - user_type
+            - feed_type
+        sparse_features:
+            - userid
+            - feedid
+            - device
+            - authorid
+            - bgm_song_id
+            - bgm_singer_id
+            - duration_q
+            - user_type
+            - feed_type 
+        dense_features: []
+        timestamp_key: date_
+        train_val_split: 11
+        val_test_split: 13
+        uid_feature_name: userid
+        iid_feature_name: feedid
+        target_feature_name: click
+        transfer_target_feature_name: like
+        color_feature_name: duration_q
+        index_file_name: wechat_index.npy
+        pos_pair_file_name: wechat_pos_pair.npy
+        pos_pair_distance_file_name: wechat_pos_pair_distance.npy
+        neg_pair_file_name: wechat_neg_pair.npy
+        neg_pair_distance_file_name: wechat_neg_pair_distance.npy
+
+train:
+    save_path:
+        amazon: ../disectr_saves
+        kuaishou: ../disectr_saves
+        wechat: ../disectr_saves
+    metrics:
+        - 'Train AUC'
+        - 'Val AUC'
+        - 'IID AUC'
+        - 'IID GAUC'
+        - 'IID logloss'
+        - 'OOD AUC'
+        - 'OOD GAUC'
+        - 'OOD logloss'
+
+run:
+    seed: 47
+
+const:
+    machine_hostname: xxx
+    mail_host: 'xxx'
+    mail_port: 587
+    mail_username: xxx
+    mail_receiver_address: xxx
