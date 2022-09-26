@@ -2,7 +2,7 @@
 """
 
 Author:
-    Weichen Shen, weichenswc@163.com
+    ICLR3489
 
 Reference:
     [1] Liu Q, Yu F, Wu S, et al. A convolutional click prediction model[C]//Proceedings of the 24th ACM International on Conference on Information and Knowledge Management. ACM, 2015: 1743-1746.

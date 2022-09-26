@@ -2,7 +2,7 @@
 """
 
 Author:
-    Weichen Shen,weichenswc@163.com
+    ICLR3489
 
 """
 

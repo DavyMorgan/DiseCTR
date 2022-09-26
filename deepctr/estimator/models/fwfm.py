@@ -1,8 +1,7 @@
 # -*- coding:utf-8 -*-
 """
 Author:
-    Weichen Shen, weichenswc@163.com
-    Harshit Pande
+    ICLR3489
 
 Reference:
     [1] Field-weighted Factorization Machines for Click-Through Rate Prediction in Display Advertising
