@@ -55,7 +55,7 @@ flags.DEFINE_integer('lnn_dim', 16, 'LNN dimension for AFN.')
 flags.DEFINE_integer('gpu_id', 1, 'GPU ID.')
 flags.DEFINE_integer('epochs', 100, 'The number of epochs.')
 flags.DEFINE_integer('batch_size', 2048, 'Batch size.')
-flags.DEFINE_boolean('enable_mail_service', True, 'Whether to e-mail yourself after each run.')
+flags.DEFINE_boolean('enable_mail_service', False, 'Whether to e-mail yourself after each run.')
 flags.DEFINE_boolean('repeat_experiment', False, 'Whether to repeat experiments with outside shell script.')
 flags.DEFINE_string('mail_pass', 'xxx', 'Password for e-mail service provided by shell read input.')
 flags.DEFINE_string('mail_host', 'xxx', 'Host for email service.')
@@ -252,9 +252,6 @@ def main(argv):
         save_path = os.path.join(cfg['train']['save_path'][flags_obj.dataset], 
                                  flags_obj.dataset + '-' + flags_obj.model + '-' + datetime.now().strftime("%Y%m%d-%H%M%S"))
         os.makedirs(save_path)
-        model_plot_path = os.path.join(save_path, 'model.png')
-        keras.utils.plot_model(model, model_plot_path, show_shapes=True)
-        print('Model plot at: {}'.format(model_plot_path))
         history = train_model(flags_obj, cfg, save_path, model, feature_names, data_splits, model_input, target, transfer_target)
         if flags_obj.analyze_model:
             model.summary()
